@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+.navigationbar{
+  box-shadow: 0px 20px 100px 0px #FFCFBD4D;
+}
+.navbar-coins{
+  border: 1px solid #FF4600;
+  border-radius: 10px;
+}
+.container-game{
+  max-width: 667px !important;
+  margin: auto;
+}
+.logo{
+  text-decoration: none;
+  color: #000;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.question-bg{
+  background: url('/img/game-banner.png');
+  background-size: cover;
+  height: 100vh;
+}
+.question-text h3{
+  font-size: 24px;
+  font-weight: 600;
+}
+.coins-text{
+  color: #FF4600;
+  font-size: 30px;
+  font-weight: 600;
+}
+.question-no{
+  font-size: 20px;
+  font-weight: 600;
+  background-color: #FF4600;
+  display: inline-block;
+  border-radius: 8px;
+}
+.queation-text{
+  font-size: 30px;
+}
+.quiz-game-text{
+  color: #FF4600;
+  font-size: 30px;
+  font-weight: 600;
+}
+.quiz-game-list li{
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.congrasulation-banner{
+  background: url('../public/img/congrasulation-banner-img.png') no-repeat;
+  background-size: cover;
+  min-height: 560px;
+}
+
+.congratulation-text{
+  font-size: 60px;
+  font-family: "Aclonica", sans-serif;
+  color: #fff;
+  font-weight: 900;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #B47F19;
+}
+
+.answer-option {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  cursor: pointer;
+}
+
+.answer-option.selected {
+  transform: scale(1.1);
+  border: 2px solid #ffd700; /* Highlight */
+}
+
+.answer-option.animate {
+  opacity: 0;
+  transform: translateX(100%);
+}

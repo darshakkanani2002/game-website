@@ -6,6 +6,7 @@ import Story from './component/Story_Page/Story'
 import Tournament from './component/tournament/tournament'
 import Quiz from './component/Quize/Quiz'
 import Navbar from './component/Navbar'
+import Stories from './component/tournament/Stories'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
                   <Route path='/congrasulation' element={<Congrasulation></Congrasulation>}></Route>
                   <Route path='/tournament' element={<Tournament></Tournament>}></Route>
                   <Route path='/story' element={<Story></Story>}></Route>
+                  <Route path='/stories' element={<Stories></Stories>}></Route>
               </Routes>
         </Router>
     </div>

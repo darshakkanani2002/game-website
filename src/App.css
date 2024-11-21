@@ -6,6 +6,9 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+a{
+  text-decoration: none !important;
+}
 .navigationbar{
   box-shadow: 0px 20px 100px 0px #FFCFBD4D;
 }
@@ -25,7 +28,9 @@
 }
 
 .question-bg{
-  background: url('/img/game-banner.png');
+  background: #fff;
+  background: url('/img/game-banner.png') 100%;
+  background-repeat: repeat;
   background-size: cover;
   height: 100vh;
 }
@@ -86,4 +91,73 @@
 .answer-option.animate {
   opacity: 0;
   transform: translateX(100%);
+}
+
+.tournament-winner-text{
+  color: #4B4B4B;
+  font-size: 11px;
+}
+.movi-name-text{
+  font-size: 12px;
+}
+.tournament-user-playing-text{
+  color: #4B4B4B;
+  font-size: 700;
+  font-size: 10px;
+}
+.entry-coin-text{
+  font-size: 11px;
+}
+.tournament-play-btn{
+  background-color: #FF4600;
+  border: 1px solid #FF4600;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 10px;
+  padding: 8px 20px;
+}
+
+/* Base styling for the footer item */
+.fotter-img-txt-bg {
+  background-color: #f8f9fa; /* Default background color */
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.fotter-img-txt-bg img {
+  width: 24px; /* Adjust image size */
+  height: auto;
+  margin-bottom: 5px;
+}
+
+.fotter-img-txt-bg h5 {
+  font-size: 14px;
+  color: #000; /* Default text color */
+}
+
+/* Active state styling */
+.fotter-img-txt-bg.active {
+  background-color: #007bff; /* Active background color */
+  color: white; /* Active text color */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add some shadow for emphasis */
+}
+
+.fotter-img-txt-bg.active h5 {
+  color: white; /* Ensure the text is visible on active background */
+}
+.fotter-img-txt-bg img{
+  filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(7500%) hue-rotate(217deg) brightness(50%) contrast(108%);
+}
+.fotter-img-txt-bg.active img {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%); /* Optional: Change icon color */
+}
+
+/* Hover effect for all items */
+.fotter-img-txt-bg:hover {
+  background-color: #007bff; /* Active background color */
+  color: #fff !important; /* Active text color */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add some shadow for emphasis */
+}
+.fotter-img-txt-bg:hover h5{
+  color: #fff;
 }

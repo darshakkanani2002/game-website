@@ -1,10 +1,10 @@
 import React from 'react'
 import Footer from './Footer'
 
-export default function Tournament() {
-    return (
-        <div>
-            <div>
+export default function Stories() {
+  return (
+    <div>
+                    <div>
                 <div className='question-bg'>
                     <div className='py-4'>
                         <div className='d-flex align-items-center'>
@@ -579,9 +579,9 @@ export default function Tournament() {
                             </div>
                         </div>                      
                     </div>
-                    <Footer></Footer>
+                   <Footer></Footer>
                 </div>
             </div>
-        </div>
-    )
+    </div>
+  )
 }

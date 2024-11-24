@@ -1,5 +1,6 @@
 import React from 'react'
 import Footer from './Footer'
+import { Link } from 'react-router-dom'
 
 export default function Tournament() {
     return (
@@ -45,7 +46,7 @@ export default function Tournament() {
                                             </div>
                                         </div>
                                         <div>
-                                            <button className='tournament-play-btn'>Play</button>
+                                           <Link to='/rule'> <button className='tournament-play-btn'>Play</button></Link>
                                         </div>
                                     </div>
                                 </div>

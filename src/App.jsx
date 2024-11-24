@@ -7,6 +7,9 @@ import Tournament from './component/tournament/tournament'
 import Quiz from './component/Quize/Quiz'
 import Navbar from './component/Navbar'
 import Stories from './component/tournament/Stories'
+import Rules from './component/Rules/Rules'
+import Questions from './component/Questions/Questions'
+import QuizAnalysis from './component/Questions/QuizAnalysis'
 
 
 function App() {
@@ -21,6 +24,9 @@ function App() {
                   <Route path='/tournament' element={<Tournament></Tournament>}></Route>
                   <Route path='/story' element={<Story></Story>}></Route>
                   <Route path='/stories' element={<Stories></Stories>}></Route>
+                  <Route path='/rule' element={<Rules></Rules>}></Route>
+                  <Route path='/questions' element={<Questions></Questions>}></Route>
+                  <Route path='/quizanalysis' element={<QuizAnalysis></QuizAnalysis>}></Route>
               </Routes>
         </Router>
     </div>

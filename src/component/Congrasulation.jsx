@@ -10,9 +10,11 @@ export default function Congrasulation() {
                         <div className='text-cente'>
                             <h1 className='congratulation-text'>congratulation</h1>
                         </div>
-                        <Link to='/tournament'><div className='question-no text-white py-2 px-4 mb-3 text-uppercase'>
-                            Let's Start
-                        </div></Link>
+                        <Link to='/tournament'>
+                            <div className='question-no text-white py-2 px-4 mb-3 text-uppercase'>
+                                Let's Start
+                            </div>
+                        </Link>
                     </div>
                 </div>
                 <div className='container-fluid'>

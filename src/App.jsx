@@ -3,13 +3,14 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route, Navigate  } from 'react-router-dom'
 import Congrasulation from './component/Congrasulation'
 import Story from './component/Story_Page/Story'
-import Tournament from './component/tournament/tournament'
+import Tournament from './component/tournament/Tournament'
 import Quiz from './component/Quize/Quiz'
 import Navbar from './component/Navbar'
 import Stories from './component/tournament/Stories'
 import Rules from './component/Rules/Rules'
 import Questions from './component/Questions/Questions'
 import QuizAnalysis from './component/Questions/QuizAnalysis'
+import Game from './component/tournament/Game'
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                   <Route path='/rule' element={<Rules></Rules>}></Route>
                   <Route path='/questions' element={<Questions></Questions>}></Route>
                   <Route path='/quizanalysis' element={<QuizAnalysis></QuizAnalysis>}></Route>
+                  <Route path='/game' element={<Game></Game>}></Route>
               </Routes>
         </Router>
     </div>

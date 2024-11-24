@@ -6,7 +6,7 @@ export default function Navbar() {
 
     return (
         <div>
-            {location.pathname === '/tournament' ? (
+            {location.pathname === '/tournament' || '/stories' ||'/game' ? (
                 <div className="bg-white py-4 navigationbar">
                     <div className="d-flex justify-content-between">
                         <div>

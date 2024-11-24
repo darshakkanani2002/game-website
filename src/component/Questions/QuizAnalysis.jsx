@@ -1,6 +1,30 @@
 import React from 'react'
+import { Doughnut } from 'react-chartjs-2';
+import {
+    Chart as ChartJS,
+    ArcElement,
+    Tooltip,
+    Legend,
+} from 'chart.js';
+import Footer from '../tournament/Footer';
+
+// Register required components
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function QuizAnalysis() {
+    const data = {
+        labels: ['Wrong', 'Correct', 'Skipped'], // Labels for the two items
+        datasets: [
+            {
+                label: 'Percentage',
+                data: [50, 30, 20], // Replace with your data values
+                backgroundColor: ['#DD292C', '#71AA0B', '#FFA600'], // Colors for each item
+                hoverBackgroundColor: ['#DD292C', '#71AA0B', '#FFA600'],
+            },
+        ],
+    };
+
+
     return (
         <div>
             <div className='question-bg'>
@@ -37,12 +61,22 @@ export default function QuizAnalysis() {
                 <div className='container-fluid'>
                     <div className='row'>
                         <div className='col-12'>
-                            <div>
+                            <div className='text-center'>
                                 <h3>View Your Quiz Result</h3>
+                            </div>
+                        </div>
+                        <div className='col-12 pb-5'>
+                            <div>
+                                <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', }}>
+                                    <div style={{ width: '45%' }}>
+                                        <Doughnut data={data} />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <Footer></Footer>
             </div>
         </div>
     )

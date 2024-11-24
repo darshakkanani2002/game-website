@@ -9,7 +9,7 @@ export default function Tournament() {
                 <div className='question-bg'>
                     <div className='py-4'>
                         <div className='d-flex align-items-center'>
-                            <div>
+                            <div className='me-2'>
                                 <img src="/public/img/game-remoret-ic.svg" alt="game-remoret-ic" className='img-fluid' />
                             </div>
                             <div>

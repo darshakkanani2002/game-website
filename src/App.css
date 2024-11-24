@@ -1,36 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Aclonica&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-*{
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
-.fw-semibold{
+
+.fw-semibold {
   font-weight: 600;
 }
-a{
+
+a {
   text-decoration: none !important;
 }
-.navigationbar{
+
+.navigationbar {
   box-shadow: 0px 20px 100px 0px #FFCFBD4D;
 }
-.navbar-coins{
+
+.navbar-coins {
   border: 1px solid #FF4600;
   border-radius: 10px;
 }
-.container-game{
-  max-width: 667px !important;
+
+.container-game {
+  max-width: 680px !important;
   margin: auto;
 }
-.logo{
+
+.logo {
   text-decoration: none;
   color: #000;
   font-size: 30px;
   font-weight: 700;
 }
 
-.question-bg{
+.question-bg {
   background: #fff;
   background: url('/img/game-banner.png') 100%;
   background-repeat: repeat;
@@ -38,42 +45,48 @@ a{
   height: 100vh;
   height: auto;
 }
-.question-text h3{
+
+.question-text h3 {
   font-size: 24px;
   font-weight: 600;
 }
-.coins-text{
+
+.coins-text {
   color: #FF4600;
   font-size: 30px;
   font-weight: 600;
 }
-.question-no{
+
+.question-no {
   font-size: 20px;
   font-weight: 600;
   background-color: #FF4600;
   display: inline-block;
   border-radius: 8px;
 }
-.queation-text{
+
+.queation-text {
   font-size: 30px;
 }
-.quiz-game-text{
+
+.quiz-game-text {
   color: #FF4600;
   font-size: 30px;
   font-weight: 600;
 }
-.quiz-game-list li{
+
+.quiz-game-list li {
   font-size: 18px;
   font-weight: 500;
 }
 
-.congrasulation-banner{
+.congrasulation-banner {
   background: url('../public/img/congrasulation-banner-img.png') no-repeat;
   background-size: cover;
   min-height: 560px;
 }
 
-.congratulation-text{
+.congratulation-text {
   font-size: 60px;
   font-family: "Aclonica", sans-serif;
   color: #fff;
@@ -89,7 +102,8 @@ a{
 
 .answer-option.selected {
   transform: scale(1.1);
-  border: 2px solid #ffd700; /* Highlight */
+  border: 2px solid #ffd700;
+  /* Highlight */
 }
 
 .answer-option.animate {
@@ -97,22 +111,26 @@ a{
   transform: translateX(100%);
 }
 
-.tournament-winner-text{
+.tournament-winner-text {
   color: #4B4B4B;
   font-size: 11px;
 }
-.movi-name-text{
+
+.movi-name-text {
   font-size: 12px;
 }
-.tournament-user-playing-text{
+
+.tournament-user-playing-text {
   color: #4B4B4B;
   font-size: 700;
   font-size: 10px;
 }
-.entry-coin-text{
+
+.entry-coin-text {
   font-size: 11px;
 }
-.tournament-play-btn{
+
+.tournament-play-btn {
   background-color: #FF4600;
   border: 1px solid #FF4600;
   color: #fff;
@@ -123,86 +141,105 @@ a{
 
 /* Base styling for the footer item */
 .fotter-img-txt-bg {
-  background-color: #fff; /* Default background color */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+  background-color: #fff;
+  /* Default background color */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* Smooth transition */
 }
 
 .fotter-img-txt-bg img {
-  width: 24px; /* Adjust image size */
+  width: 24px;
+  /* Adjust image size */
   height: auto;
   margin-bottom: 5px;
 }
 
 .fotter-img-txt-bg h5 {
   font-size: 14px;
-  color: #000; /* Default text color */
+  color: #000;
+  /* Default text color */
 }
 
 /* Active state styling */
 .fotter-img-txt-bg.active {
-  background-color: #FF4600; /* Active background color */
-  color: white; /* Active text color */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add some shadow for emphasis */
+  background-color: #FF4600;
+  /* Active background color */
+  color: white;
+  /* Active text color */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  /* Add some shadow for emphasis */
 }
 
 .fotter-img-txt-bg.active h5 {
-  color: white; /* Ensure the text is visible on active background */
+  color: white;
+  /* Ensure the text is visible on active background */
 }
-.fotter-img-txt-bg img{
+
+.fotter-img-txt-bg img {
   filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(7500%) hue-rotate(217deg) brightness(50%) contrast(108%);
 }
+
 .fotter-img-txt-bg.active img {
-  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%); /* Optional: Change icon color */
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+  /* Optional: Change icon color */
 }
 
 /* Hover effect for all items */
 .fotter-img-txt-bg:hover {
-  background-color: #FF4600; /* Active background color */
-  color: #fff !important; /* Active text color */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add some shadow for emphasis */
+  background-color: #FF4600;
+  /* Active background color */
+  color: #fff !important;
+  /* Active text color */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  /* Add some shadow for emphasis */
 }
-.fotter-img-txt-bg:hover h5{
+
+.fotter-img-txt-bg:hover h5 {
   color: #fff;
 }
 
 
-.view-rank-sec{
+.view-rank-sec {
   background-color: #FFEDE7;
   padding: 5px 11px;
   display: inline-block;
   border-radius: 8px;
 }
 
-.text-how-to-play{
+.text-how-to-play {
   background-color: #fff;
   box-shadow: 0px 2px 0px #FF4600;
   padding: 11px 15px;
   border-radius: 14px;
   text-align: center;
 }
-.rule-box{
+
+.rule-box {
   background-color: #fff;
   box-shadow: 0px 2px 4px #FF4600;
   border-radius: 20px;
   margin-top: -30px;
 }
-.rule-shadow{
+
+.rule-shadow {
   box-shadow: 0px 10px 50px 0px #0000001A;
 }
 
-.tournament-rule-box{
+.tournament-rule-box {
   border-radius: 15px;
   background-color: #fff;
   box-shadow: 0px 10px 50px 0px #0000001A;
 }
-.tournament-rule-tetx{
+
+.tournament-rule-tetx {
   color: #FF4600;
 }
-.tournament-rule-list{
+
+.tournament-rule-list {
   list-style-type: default !important;
 }
 
-.question-quize-time{
+.question-quize-time {
   border: 1px solid #FF4600;
   height: 80px;
   width: 80px;
@@ -212,7 +249,8 @@ a{
   justify-content: center;
   background-color: #fff;
 }
-.quize-timer{
+
+.quize-timer {
   border: 2px solid #FF4600;
   height: 30px;
   width: 30px;
@@ -223,22 +261,24 @@ a{
   background-color: #fff;
   margin-left: -18px;
 }
-.quize-timer h6{
+
+.quize-timer h6 {
   font-size: 14px;
 }
 
-.questions-bg{
+.questions-bg {
   background-color: #fff !important;
   border-radius: 20px;
   box-shadow: 0px -4px 0px 0px #FF4600;
 }
 
-.question-answer-sec{
+.question-answer-sec {
   background-color: #fff;
   border: 1px solid #FF4600;
   border-radius: 10px;
 }
-.answers-text{
+
+.answers-text {
   background-color: #FF4600;
   color: #fff;
   position: absolute;
@@ -248,19 +288,60 @@ a{
   left: -3px;
   transform: translateY(-50%);
 }
-.score-text{
+
+.score-text {
   border: 1px solid #FF4600;
   background-color: #fff;
   border-radius: 40px 40px 10px 10px;
 }
-.correct-answer{
+
+.correct-answer {
   background-color: #71AA0B;
   color: #fff;
   border-radius: 40px 40px 10px 10px;
 }
 
-.wrong-answer{
+.wrong-answer {
   background-color: #DD292C;
   color: #fff;
   border-radius: 40px 40px 10px 10px;
+}
+
+.all-game-img {
+  border-radius: 28px;
+  height: 176px !important;
+}
+
+.game-name-btn {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(2.9194130897521973px);
+  border-radius: 0px 0px 18px 18px;
+}
+
+.game-name-plate {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.game-play-btn {
+  background-color: #FF4600;
+  color: #fff;
+}
+.game-name-btn span{
+  font-size: 11px;
+}
+.nav-link{
+  color: #000 !important;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+  background-color: #fff !important;
+  color: #FF4600 !important;
+  position: relative !important;
+  border-radius: 13px 0px 0px 13px;
+  box-shadow: -3px 0px 0px 0px #FF4600;
+}
+.stories-icon{
+  width: 32px !important;
+  height: 32px !important;
 }

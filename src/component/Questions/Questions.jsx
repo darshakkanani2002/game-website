@@ -200,7 +200,7 @@ export default function Questions() {
                         </div>
                         <div className="col-12 text-center mt-4 question-txt-shadow">
                             <div className="questions-bg py-3">
-                                <h3>{currentQuestion.question}</h3>
+                                <h3>{currentQuestion.question}</h3> 
                             </div>
                         </div>
                     </div>

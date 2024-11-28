@@ -9,11 +9,32 @@ export default function Questions() {
     const [correctAnswers, setCorrectAnswers] = useState(0);
     const [wrongAnswers, setWrongAnswers] = useState(0);
     const [skippedAnswers, setSkippedAnswers] = useState(0);
-    const [animationClass, setAnimationClass] = useState("");
+    const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
+    const [animate, setAnimate] = useState(true); // New state for animations
     const navigate = useNavigate();
 
-    // Question and answer data
+    // Questions data
     const questions = [
+        {
+            question: "How many games did Mark Stein play for Bournemouth?",
+            options: [
+                { text: "800", option: "A" },
+                { text: "100", option: "B" },
+                { text: "500", option: "C" },
+                { text: "400", option: "D" },
+            ],
+            correctAnswer: "B",
+        },
+        {
+            question: "Who won the 2018 FIFA World Cup?",
+            options: [
+                { text: "France", option: "A" },
+                { text: "Croatia", option: "B" },
+                { text: "Germany", option: "C" },
+                { text: "Brazil", option: "D" },
+            ],
+            correctAnswer: "A",
+        },
         {
             question: "How many games did Mark Stein play for Bournemouth?",
             options: [
@@ -94,26 +115,6 @@ export default function Questions() {
             ],
             correctAnswer: "B",
         },
-        {
-            question: "What is the chemical formula for water?",
-            options: [
-                { text: "H2O", option: "A" },
-                { text: "CO2", option: "B" },
-                { text: "O2", option: "C" },
-                { text: "NaCl", option: "D" },
-            ],
-            correctAnswer: "A",
-        },
-        {
-            question: "Which year did the Titanic sink?",
-            options: [
-                { text: "1905", option: "A" },
-                { text: "1912", option: "B" },
-                { text: "1920", option: "C" },
-                { text: "1930", option: "D" },
-            ],
-            correctAnswer: "B",
-        },
     ];
 
     const currentQuestion = questions[currentQuestionIndex];
@@ -137,32 +138,33 @@ export default function Questions() {
             setCorrectAnswers((prev) => prev + 1);
         } else {
             setWrongAnswers((prev) => prev + 1);
+            setShowCorrectAnswer(true); // Show the correct answer when the wrong answer is selected
         }
 
-        setAnimationClass("fade-out");
         setTimeout(() => {
-            setAnimationClass("fade-in");
             nextQuestion();
-        }, 500);
+        },1100); // Delay to show the correct answer highlight
     };
 
     const handleSkip = () => {
         setSkippedAnswers((prev) => prev + 1);
-        setAnimationClass("fade-out");
-        setTimeout(() => {
-            setAnimationClass("fade-in");
-            nextQuestion();
-        }, 500);
+        nextQuestion();
     };
 
     const nextQuestion = () => {
-        setSelectedAnswer(null);
-        setTimeLeft(30);
-        if (currentQuestionIndex < questions.length - 1) {
-            setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-        } else {
-            handleQuizCompletion();
-        }
+        setAnimate(false); // Trigger fade-out animation
+        setTimeout(() => {
+            setSelectedAnswer(null);
+            setShowCorrectAnswer(false);
+            setTimeLeft(30);
+
+            if (currentQuestionIndex < questions.length - 1) {
+                setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+            } else {
+                handleQuizCompletion();
+            }
+            setAnimate(true); // Trigger fade-in animation
+        }, 100); // Match duration with CSS animation timing
     };
 
     const handleQuizCompletion = () => {
@@ -199,39 +201,48 @@ export default function Questions() {
                             </h5>
                         </div>
                         <div className="col-12 text-center mt-4 question-txt-shadow">
-                            <div className="questions-bg py-3">
-                                <h3>{currentQuestion.question}</h3> 
+                            <div className={`questions-bg py-3 ${animate ? "fade-in" : "fade-out"}`}>
+                                <h3>{currentQuestion.question}</h3>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div className="container px-4">
-                    <div className={`row justify-content-center ${animationClass}`}>
+                    <div className="row justify-content-center">
                         {currentQuestion.options.map(({ text, option }) => {
                             const isSelected = selectedAnswer === option;
                             const isCorrect = option === currentQuestion.correctAnswer;
+
                             const answerClass = isSelected
                                 ? isCorrect
                                     ? "border-green"
                                     : "border-red"
+                                : showCorrectAnswer && isCorrect
+                                ? "border-green"
+                                : "";
+
+                            const answerAlpha = isSelected
+                                ? isCorrect
+                                    ? "bg-green"
+                                    : "bg-red"
+                                : showCorrectAnswer && isCorrect
+                                ? "bg-green"
                                 : "";
 
                             return (
                                 <div
                                     key={option}
-                                    className={`col-5 text-center mb-3 position-relative ${answerClass}`}
-                                    onClick={() =>
-                                        timeLeft > 0 && !selectedAnswer
-                                            ? handleAnswerClick(option)
-                                            : null
-                                    }
+                                    className={`col-5 text-center mb-3 position-relative ${answerClass} ${
+                                        animate ? "fade-in" : "fade-out"
+                                    }`}
+                                    onClick={() => timeLeft > 0 && !selectedAnswer && handleAnswerClick(option)}
                                     style={{ cursor: "pointer" }}
                                 >
-                                    <div className={`question-answer-sec py-3 ${isSelected && (isCorrect ? "border-green" : "border-red")}`}>
+                                    <div className={`question-answer-sec py-3 ${answerClass}`}>
                                         <h5 className="mb-0">{text}</h5>
                                     </div>
-                                    <div className={`answers-text py-2 ${isSelected && (isCorrect ? "bg-green" : "bg-red")}`}>
+                                    <div className={`answers-text py-2 ${answerAlpha}`}>
                                         <span>{option}</span>
                                     </div>
                                 </div>
@@ -247,13 +258,6 @@ export default function Questions() {
                         disabled={!!selectedAnswer}
                     >
                         Skip
-                    </button>
-                    <button
-                        className="btn btn-success d-none"
-                        onClick={nextQuestion}
-                        disabled={!selectedAnswer && currentQuestionIndex < questions.length - 1}
-                    >
-                        {currentQuestionIndex < questions.length - 1 ? "Next Question" : "Finish Quiz"}
                     </button>
                 </div>
 

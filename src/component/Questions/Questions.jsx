@@ -36,26 +36,6 @@ export default function Questions() {
             correctAnswer: "A",
         },
         {
-            question: "How many games did Mark Stein play for Bournemouth?",
-            options: [
-                { text: "800", option: "A" },
-                { text: "100", option: "B" },
-                { text: "500", option: "C" },
-                { text: "400", option: "D" },
-            ],
-            correctAnswer: "B",
-        },
-        {
-            question: "Who won the 2018 FIFA World Cup?",
-            options: [
-                { text: "France", option: "A" },
-                { text: "Croatia", option: "B" },
-                { text: "Germany", option: "C" },
-                { text: "Brazil", option: "D" },
-            ],
-            correctAnswer: "A",
-        },
-        {
             question: "What is the capital of Australia?",
             options: [
                 { text: "Sydney", option: "A" },
@@ -114,6 +94,36 @@ export default function Questions() {
                 { text: "Antarctica", option: "D" },
             ],
             correctAnswer: "B",
+        },
+        {
+            question: "What is the chemical formula for water?",
+            options: [
+                { text: "H2O", option: "A" },
+                { text: "CO2", option: "B" },
+                { text: "O2", option: "C" },
+                { text: "NaCl", option: "D" },
+            ],
+            correctAnswer: "A",
+        },
+        {
+            question: "Which year did the Titanic sink?",
+            options: [
+                { text: "1905", option: "A" },
+                { text: "1912", option: "B" },
+                { text: "1920", option: "C" },
+                { text: "1930", option: "D" },
+            ],
+            correctAnswer: "B",
+        },
+        {
+            question: "How Many Year Ram go to Vanvaas",
+            options: [
+                { text: "15", option: "A" },
+                { text: "16", option: "B" },
+                { text: "14", option: "C" },
+                { text: "18", option: "D" },
+            ],
+            correctAnswer: "C",
         },
     ];
 
@@ -197,7 +207,7 @@ export default function Questions() {
                     <div className="row mb-3">
                         <div className="col-12 text-center">
                             <h5 className="mb-0 fw-bold">
-                                Question {currentQuestionIndex + 1}/{questions.length}
+                                Question {currentQuestionIndex}/{questions.length}
                             </h5>
                         </div>
                         <div className="col-12 text-center mt-4 question-txt-shadow">

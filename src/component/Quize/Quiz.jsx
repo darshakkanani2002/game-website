@@ -1,20 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
+
   const navigate = useNavigate();
-
-  // Check if the quiz was already completed
-  useEffect(() => {
-    const hasCompletedQuiz = localStorage.getItem('hasCompletedQuiz');
-    if (hasCompletedQuiz) {
-      navigate('/tournament'); // Redirect if quiz is already completed
-    }
-  }, [navigate]);
-
   const questions = [
     {
       id: 1,
@@ -47,8 +39,6 @@ export default function Quiz() {
       setSelectedAnswer(null);
 
       if (currentQuestion === questions.length) {
-        // Mark the quiz as completed
-        localStorage.setItem('hasCompletedQuiz', 'true');
         navigate('/congrasulation'); // Navigate to the congratulation page
       } else {
         setCurrentQuestion((prev) => prev + 1);

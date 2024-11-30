@@ -47,9 +47,15 @@ a {
   /* min-height: 70rem; */
 }
 
-.question-text h3 {
+.question-text  {
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 500;
+}
+
+.quiz-images{
+  border: 1px solid #DD292C;
+  height: 146px !important;
+  border-radius: 10px !important;
 }
 
 .coins-text {

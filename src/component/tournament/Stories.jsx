@@ -1,5 +1,6 @@
 import React from 'react'
 import Footer from './Footer'
+import { Link } from 'react-router-dom'
 
 export default function Stories() {
     return (
@@ -46,13 +47,14 @@ export default function Stories() {
                                 <div class="tab-content" id="v-pills-tabContent">
                                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
                                         <div className='col-12 mb-3'>
-                                            <div>
-                                                <img src="../../../public/img/stories-img-01.png" alt="stories-img-01" className='img-fluid mb-2' />
-
+                                            <Link to='/story'>
                                                 <div>
-                                                    <h4>Liverpool Aim to Secure Top Spot at Selhurst Park</h4>
+                                                    <img src="../../../public/img/stories-img-01.png" alt="stories-img-01" className='img-fluid mb-2' />
+                                                    <div>
+                                                        <h4 className='text-black'>Liverpool Aim to Secure Top Spot at Selhurst Park</h4>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </Link>
                                         </div>
 
                                         <div className='col-12 mb-3'>

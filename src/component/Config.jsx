@@ -1,1 +1,1 @@
-export const Test_API = 'http://192.168.29.233:10500/api/v1/'
+export const Test_API = 'http://192.168.1.107:10500/api/v1/'

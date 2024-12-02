@@ -92,7 +92,7 @@ export default function Quiz() {
               <div className="col-12 text-center question-bg">
                 <p className="question-text text-capitalize">{current.text}</p>
               </div>
-              {current.images.map((vImage, index) =>
+              {current.images.slice(0, 4).map((vImage, index) =>
                 typeof vImage === "string" ? (
                   <div
                     className={`answer-option col-3 ${selectedAnswer === index ? "selected" : ""
@@ -102,7 +102,7 @@ export default function Quiz() {
                   >
                     <img
                       crossOrigin="anonymous"
-                      src={`http://192.168.29.233:10500/${vImage}`}
+                      src={`http://192.168.1.107:10500/${vImage}`}
                       alt="images"
                       className="img-fluid quiz-images w-100"
                     />

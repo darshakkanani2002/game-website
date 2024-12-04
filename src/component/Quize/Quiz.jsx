@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Test_API } from "../Config";
+import { Img_Url, Test_API } from "../Config";
 
 export default function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(1); // 1 for isStatus: 0, 2 for isStatus: 1
@@ -102,7 +102,7 @@ export default function Quiz() {
                   >
                     <img
                       crossOrigin="anonymous"
-                      src={`http://192.168.1.107:10500/${vImage}`}
+                      src={`${Img_Url}${vImage}`}
                       alt="images"
                       className="img-fluid quiz-images w-100"
                     />

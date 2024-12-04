@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Footer from './Footer'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
-import { Test_API } from '../Config';
+import { Img_Url, Test_API } from '../Config';
 
 export default function Tournament() {
     const [images, setImagesData] = useState([]);
@@ -39,7 +39,7 @@ export default function Tournament() {
                                     <div>
                                         <img 
                                         crossOrigin="anonymous"
-                                        src={`http://192.168.1.107:10500/${item.vImage}`} alt="tournament-img-01" className='img-fluid mb-1' />
+                                        src={`${Img_Url}${item.vImage}`} alt="tournament-img-01" className='img-fluid mb-1' />
                                         <div>
                                             <p className='tournament-winner-text mb-0'>
                                                 Winner declaires in 0-4 : 0-13 : 0-26

@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import Footer from "../tournament/Footer";
+import { Test_API } from "../Config";
 
 export default function Questions() {
+    const [questions, setQuestions] = useState([]);
     const [timeLeft, setTimeLeft] = useState(30);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -10,125 +13,31 @@ export default function Questions() {
     const [wrongAnswers, setWrongAnswers] = useState(0);
     const [skippedAnswers, setSkippedAnswers] = useState(0);
     const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
-    const [animate, setAnimate] = useState(true); // New state for animations
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
-
-    // Questions data
-    const questions = [
-        {
-            question: "How many games did Mark Stein play for Bournemouth?",
-            options: [
-                { text: "800", option: "A" },
-                { text: "100", option: "B" },
-                { text: "500", option: "C" },
-                { text: "400", option: "D" },
-            ],
-            correctAnswer: "B",
-        },
-        {
-            question: "Who won the 2018 FIFA World Cup?",
-            options: [
-                { text: "France", option: "A" },
-                { text: "Croatia", option: "B" },
-                { text: "Germany", option: "C" },
-                { text: "Brazil", option: "D" },
-            ],
-            correctAnswer: "A",
-        },
-        {
-            question: "What is the capital of Australia?",
-            options: [
-                { text: "Sydney", option: "A" },
-                { text: "Melbourne", option: "B" },
-                { text: "Canberra", option: "C" },
-                { text: "Perth", option: "D" },
-            ],
-            correctAnswer: "C",
-        },
-        {
-            question: "What is the largest planet in our solar system?",
-            options: [
-                { text: "Earth", option: "A" },
-                { text: "Jupiter", option: "B" },
-                { text: "Saturn", option: "C" },
-                { text: "Mars", option: "D" },
-            ],
-            correctAnswer: "B",
-        },
-        {
-            question: "Which element has the chemical symbol O?",
-            options: [
-                { text: "Oxygen", option: "A" },
-                { text: "Gold", option: "B" },
-                { text: "Osmium", option: "C" },
-                { text: "Oganesson", option: "D" },
-            ],
-            correctAnswer: "A",
-        },
-        {
-            question: "What is the boiling point of water in Celsius?",
-            options: [
-                { text: "90°C", option: "A" },
-                { text: "50°C", option: "B" },
-                { text: "100°C", option: "C" },
-                { text: "150°C", option: "D" },
-            ],
-            correctAnswer: "C",
-        },
-        {
-            question: "Who wrote 'Romeo and Juliet'?",
-            options: [
-                { text: "Charles Dickens", option: "A" },
-                { text: "William Shakespeare", option: "B" },
-                { text: "Mark Twain", option: "C" },
-                { text: "Jane Austen", option: "D" },
-            ],
-            correctAnswer: "B",
-        },
-        {
-            question: "Which is the smallest continent?",
-            options: [
-                { text: "Asia", option: "A" },
-                { text: "Australia", option: "B" },
-                { text: "Europe", option: "C" },
-                { text: "Antarctica", option: "D" },
-            ],
-            correctAnswer: "B",
-        },
-        {
-            question: "What is the chemical formula for water?",
-            options: [
-                { text: "H2O", option: "A" },
-                { text: "CO2", option: "B" },
-                { text: "O2", option: "C" },
-                { text: "NaCl", option: "D" },
-            ],
-            correctAnswer: "A",
-        },
-        {
-            question: "Which year did the Titanic sink?",
-            options: [
-                { text: "1905", option: "A" },
-                { text: "1912", option: "B" },
-                { text: "1920", option: "C" },
-                { text: "1930", option: "D" },
-            ],
-            correctAnswer: "B",
-        },
-        {
-            question: "How Many Year Ram go to Vanvaas",
-            options: [
-                { text: "15", option: "A" },
-                { text: "16", option: "B" },
-                { text: "14", option: "C" },
-                { text: "18", option: "D" },
-            ],
-            correctAnswer: "C",
-        },
-    ];
 
     const currentQuestion = questions[currentQuestionIndex];
 
+    // Fetch questions from the API
+    useEffect(() => {
+        const fetchQuestions = async () => {
+            try {
+                const response = await axios.post(`${Test_API}question/list`);
+                console.log("API Response:", response.data);
+                const fetchedQuestions = response.data.data[0]?.arrQuestion || [];
+                setQuestions(fetchedQuestions);
+                setLoading(false);
+            } catch (err) {
+                console.error(err);
+                setError("Failed to load questions. Please try again later.");
+                setLoading(false);
+            }
+        };
+        fetchQuestions();
+    }, []);
+
+    // Timer logic
     useEffect(() => {
         if (timeLeft > 0 && !selectedAnswer) {
             const timer = setInterval(() => {
@@ -140,43 +49,43 @@ export default function Questions() {
         }
     }, [timeLeft, selectedAnswer]);
 
+    // Handle answer selection
     const handleAnswerClick = (answer) => {
         if (selectedAnswer) return;
         setSelectedAnswer(answer);
 
-        if (answer === currentQuestion.correctAnswer) {
+        if (answer === currentQuestion.vAns) {
             setCorrectAnswers((prev) => prev + 1);
         } else {
             setWrongAnswers((prev) => prev + 1);
-            setShowCorrectAnswer(true); // Show the correct answer when the wrong answer is selected
+            setShowCorrectAnswer(true);
         }
 
         setTimeout(() => {
             nextQuestion();
-        },1100); // Delay to show the correct answer highlight
+        }, 1100);
     };
 
+    // Handle skip action
     const handleSkip = () => {
         setSkippedAnswers((prev) => prev + 1);
         nextQuestion();
     };
 
+    // Proceed to the next question
     const nextQuestion = () => {
-        setAnimate(false); // Trigger fade-out animation
-        setTimeout(() => {
-            setSelectedAnswer(null);
-            setShowCorrectAnswer(false);
-            setTimeLeft(30);
+        setSelectedAnswer(null);
+        setShowCorrectAnswer(false);
+        setTimeLeft(30);
 
-            if (currentQuestionIndex < questions.length - 1) {
-                setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-            } else {
-                handleQuizCompletion();
-            }
-            setAnimate(true); // Trigger fade-in animation
-        }, 100); // Match duration with CSS animation timing
+        if (currentQuestionIndex < questions.length - 1) {
+            setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+        } else {
+            handleQuizCompletion();
+        }
     };
 
+    // Handle quiz completion
     const handleQuizCompletion = () => {
         const quizData = {
             correct: correctAnswers,
@@ -187,10 +96,32 @@ export default function Questions() {
         navigate("/quiz-analysis", { state: quizData });
     };
 
+    // Loading and error states
+    if (loading) {
+        return <div>Loading questions...</div>;
+    }
+
+    if (error) {
+        return <div>{error}</div>;
+    }
+
+    if (!currentQuestion) {
+        return <div>No questions available.</div>;
+    }
+
+    // Render quiz component
+    const options = [
+        { label: "A", key: "vA" },
+        { label: "B", key: "vB" },
+        { label: "C", key: "vC" },
+        { label: "D", key: "vD" },
+    ];
+
     return (
         <div>
             <div className="question-bg">
                 <div className="container-fluid pt-5">
+                    {/* Quiz Header */}
                     <div className="d-flex justify-content-end">
                         <div className="timer-box d-flex align-items-center">
                             <div className="question-quize-time h6">
@@ -204,56 +135,56 @@ export default function Questions() {
                 </div>
 
                 <div className="container-fluid">
+                    {/* Question Section */}
                     <div className="row mb-3">
                         <div className="col-12 text-center">
                             <h5 className="mb-0 fw-bold">
-                                Question {currentQuestionIndex}/{questions.length}
+                                Question {currentQuestionIndex + 1}/{questions.length}
                             </h5>
                         </div>
                         <div className="col-12 text-center mt-4 question-txt-shadow">
-                            <div className={`questions-bg py-3 ${animate ? "fade-in" : "fade-out"}`}>
-                                <h3>{currentQuestion.question}</h3>
+                            <div className="questions-bg py-3">
+                                <h3>{currentQuestion.vQuestion}</h3>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                {/* Options Section */}
                 <div className="container px-4">
                     <div className="row justify-content-center">
-                        {currentQuestion.options.map(({ text, option }) => {
-                            const isSelected = selectedAnswer === option;
-                            const isCorrect = option === currentQuestion.correctAnswer;
+                        {options.map(({ label, key }) => {
+                            const optionText = currentQuestion[key];
+                            const isSelected = selectedAnswer === optionText;
+                            const isCorrect = optionText === currentQuestion.vAns;
 
                             const answerClass = isSelected
                                 ? isCorrect
                                     ? "border-green"
                                     : "border-red"
                                 : showCorrectAnswer && isCorrect
-                                ? "border-green"
-                                : "";
+                                    ? "border-green"
+                                    : "";
 
                             const answerAlpha = isSelected
                                 ? isCorrect
                                     ? "bg-green"
                                     : "bg-red"
                                 : showCorrectAnswer && isCorrect
-                                ? "bg-green"
-                                : "";
-
+                                    ? "bg-green"
+                                    : "";
                             return (
                                 <div
-                                    key={option}
-                                    className={`col-5 text-center mb-3 position-relative ${answerClass} ${
-                                        animate ? "fade-in" : "fade-out"
-                                    }`}
-                                    onClick={() => timeLeft > 0 && !selectedAnswer && handleAnswerClick(option)}
+                                    key={key}
+                                    className={`col-5 text-center mb-3 position-relative ${answerClass}`}
+                                    onClick={() => timeLeft > 0 && !selectedAnswer && handleAnswerClick(optionText)}
                                     style={{ cursor: "pointer" }}
                                 >
                                     <div className={`question-answer-sec py-3 ${answerClass}`}>
-                                        <h5 className="mb-0">{text}</h5>
+                                        <h5 className="mb-0">{optionText}</h5>
                                     </div>
                                     <div className={`answers-text py-2 ${answerAlpha}`}>
-                                        <span>{option}</span>
+                                        <span>{label} </span>
                                     </div>
                                 </div>
                             );
@@ -270,7 +201,6 @@ export default function Questions() {
                         Skip
                     </button>
                 </div>
-
                 <div className="container px-4 pb-5">
                     <div className="row justify-content-center">
                         <div className="col-4 text-center">
@@ -290,6 +220,7 @@ export default function Questions() {
                         </div>
                     </div>
                 </div>
+                {/* Footer Section */}
                 <Footer />
             </div>
         </div>

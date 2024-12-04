@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Test_API } from '../Config';
+import { Img_Url, Test_API } from '../Config';
 
 export default function Rules() {
     const [images, setImagesData] = useState([]);
@@ -30,17 +30,17 @@ export default function Rules() {
                     <div className='container-fluid'>
                         {Array.isArray(images) && images.map((item, index) => (
                             <div className='row align-items-center' key={index}>
-                                <div className='col-4'>
+                                <div className='col-4 mb-5'>
                                     <div>
                                         <img
                                             crossOrigin="anonymous"
-                                            src={`http://192.168.1.107:10500/${item.vImage}`}
+                                            src={`${Img_Url}${item.vImage}`}
                                             alt={`rule-img-${index}`}
                                             className='img-fluid'
                                         />
                                     </div>
                                 </div>
-                                <div className='col-8'>
+                                <div className='col-8 mb-5'>
                                     <div>
                                         <h3 className='mb-0'>{item.vName}</h3>
                                         <p className='mb-0'>
@@ -65,6 +65,45 @@ export default function Rules() {
                                         </div>
                                     </div>
                                 </div>
+                                <div className='col-12'>
+                                    <div className='row justify-content-center'>
+                                        <div className='col-3'>
+                                            <div>
+                                                <h5 className='text-how-to-play position-relative'>How To Play</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='col-12 mb-4'>
+                                    <div className='rule-shadow'>
+                                        <div className='rule-box p-5'>
+                                            <div className='d-flex mb-3'>
+                                                <div className='me-3'>
+                                                    <img src="../../../public/img/rule-arrow-ic.png" alt="rule-arrow-ic" className='img-fluid' />
+                                                </div>
+                                                <div>
+                                                    <h5>You got 90 seconds.</h5>
+                                                </div>
+                                            </div>
+                                            <div className='d-flex mb-3'>
+                                                <div className='me-3'>
+                                                    <img src="../../../public/img/rule-arrow-ic.png" alt="rule-arrow-ic" className='img-fluid' />
+                                                </div>
+                                                <div>
+                                                    <h5>Answer as many questions as you can.</h5>
+                                                </div>
+                                            </div>
+                                            <div className='d-flex mb-3'>
+                                                <div className='me-3'>
+                                                    <img src="../../../public/img/rule-arrow-ic.png" alt="rule-arrow-ic" className='img-fluid' />
+                                                </div>
+                                                <div>
+                                                    <h5>Entry Fees: 5</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div className='col-12 text-center'>
                                     <Link to={`/questions/${item._id}`}>
                                         <div className='question-no text-white py-2 px-4 mb-3 text-uppercase'>
@@ -77,43 +116,8 @@ export default function Rules() {
                     </div>
 
                     <div className='container'>
-                        <div className='row justify-content-center'>
-                            <div className='col-3'>
-                                <div>
-                                    <h5 className='text-how-to-play'>How To Play</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='col-12'>
-                            <div className='rule-shadow'>
-                                <div className='rule-box p-5'>
-                                    <div className='d-flex mb-3'>
-                                        <div className='me-3'>
-                                            <img src="../../../public/img/rule-arrow-ic.png" alt="rule-arrow-ic" className='img-fluid' />
-                                        </div>
-                                        <div>
-                                            <h5>You got 90 seconds.</h5>
-                                        </div>
-                                    </div>
-                                    <div className='d-flex mb-3'>
-                                        <div className='me-3'>
-                                            <img src="../../../public/img/rule-arrow-ic.png" alt="rule-arrow-ic" className='img-fluid' />
-                                        </div>
-                                        <div>
-                                            <h5>Answer as many questions as you can.</h5>
-                                        </div>
-                                    </div>
-                                    <div className='d-flex mb-3'>
-                                        <div className='me-3'>
-                                            <img src="../../../public/img/rule-arrow-ic.png" alt="rule-arrow-ic" className='img-fluid' />
-                                        </div>
-                                        <div>
-                                            <h5>Entry Fees: 5</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+
 
                         <div className='col-12 text-center mt-4'>
                             <h5>Tap below to start playing this tournament. 5 coins will be deducted from your wallet when you tap below.</h5>

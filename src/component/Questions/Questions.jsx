@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Footer from "../tournament/Footer";
 import { Test_API } from "../Config";
@@ -14,28 +14,40 @@ export default function Questions() {
     const [skippedAnswers, setSkippedAnswers] = useState(0);
     const [showCorrectAnswer, setShowCorrectAnswer] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [animate, setAnimate] = useState(true); // New state for animations
     const [error, setError] = useState(null);
     const navigate = useNavigate();
+    const { id } = useParams(); // Get the ID from the URL
 
     const currentQuestion = questions[currentQuestionIndex];
 
-    // Fetch questions from the API
+    // Fetch questions from the API based on the ID
     useEffect(() => {
         const fetchQuestions = async () => {
+            if (!id) {
+                setError("ID is missing from the URL.");
+                setLoading(false);
+                return;
+            }
+
             try {
+                console.log("Requesting questions with ID:", id);
+
                 const response = await axios.post(`${Test_API}question/list`);
                 console.log("API Response:", response.data);
-                const fetchedQuestions = response.data.data[0]?.arrQuestion || [];
+
+                const fetchedQuestions = response.data?.data[0]?.arrQuestion || [];
                 setQuestions(fetchedQuestions);
                 setLoading(false);
             } catch (err) {
-                console.error(err);
+                console.error("Error fetching questions:", err);
                 setError("Failed to load questions. Please try again later.");
                 setLoading(false);
             }
         };
+
         fetchQuestions();
-    }, []);
+    }, [id]);
 
     // Timer logic
     useEffect(() => {
@@ -74,15 +86,19 @@ export default function Questions() {
 
     // Proceed to the next question
     const nextQuestion = () => {
-        setSelectedAnswer(null);
-        setShowCorrectAnswer(false);
-        setTimeLeft(30);
+        setAnimate(false); // Trigger fade-out animation
+        setTimeout(() => {
+            setSelectedAnswer(null);
+            setShowCorrectAnswer(false);
+            setTimeLeft(30);
 
-        if (currentQuestionIndex < questions.length - 1) {
-            setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-        } else {
-            handleQuizCompletion();
-        }
+            if (currentQuestionIndex < questions.length - 1) {
+                setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+            } else {
+                handleQuizCompletion();
+            }
+            setAnimate(true); // Trigger fade-in animation
+        }, 100); // Match duration with CSS animation timing
     };
 
     // Handle quiz completion
@@ -143,7 +159,7 @@ export default function Questions() {
                             </h5>
                         </div>
                         <div className="col-12 text-center mt-4 question-txt-shadow">
-                            <div className="questions-bg py-3">
+                            <div className={`questions-bg py-3 ${animate ? "fade-in" : "fade-out"}`}>
                                 <h3>{currentQuestion.vQuestion}</h3>
                             </div>
                         </div>

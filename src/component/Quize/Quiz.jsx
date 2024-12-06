@@ -9,6 +9,7 @@ export default function Quiz() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [images, setImages] = useState([]); // Store fetched images
   const [loading, setLoading] = useState(true);
+  const [coins, setCoins] = useState(0); // Track coins earned
   const navigate = useNavigate();
 
   // Fetch images on component mount and on currentQuestion change
@@ -45,11 +46,13 @@ export default function Quiz() {
       setSelectedAnswer(null);
 
       if (currentQuestion === 1) {
-        // Move to second question
+        // Move to the second question
         setCurrentQuestion(2);
       } else if (currentQuestion === 2) {
-        // Navigate to congratulations
-        navigate("/congrasulation");
+        // Add coins reward and navigate to the congratulations page
+        const newCoins = coins + 900;
+        setCoins(newCoins);
+        navigate("/congrasulation", { state: { coins: newCoins } });
       }
     }, 1000);
   };
@@ -57,12 +60,12 @@ export default function Quiz() {
   const renderQuestion = () => {
     if (currentQuestion === 1) {
       return {
-        text: "Which one is your favorite movie Select one.",
+        text: "Which one is your favorite movie? Select one.",
         images,
       };
     } else if (currentQuestion === 2) {
       return {
-        text: "Which one is your favorite Game Select one.",
+        text: "Which one is your favorite game? Select one.",
         images,
       };
     }
@@ -77,14 +80,12 @@ export default function Quiz() {
         <div>Loading...</div>
       ) : current ? (
         <div className="question-bg">
-          <div>
-            <div className="text-center pt-5 question-text">
-              <h2 className="fw-bold">Let’s start with your Fantastic Brain</h2>
-              <h3>Answer these Simple Questions</h3>
-              <h2 className="coins-text">Get 100 Coins</h2>
-              <div className="question-no text-white p-2 mb-3">
-                Question {currentQuestion}/2
-              </div>
+          <div className="text-center pt-5 question-text">
+            <h2 className="fw-bold">Let’s start with your Fantastic Brain</h2>
+            <h3>Answer these Simple Questions</h3>
+            <h2 className="coins-text">Get 100 Coins</h2>
+            <div className="question-no text-white p-2 mb-3">
+              Question {currentQuestion}/2
             </div>
           </div>
           <div className="container-fluid">
@@ -95,8 +96,7 @@ export default function Quiz() {
               {current.images.slice(0, 4).map((vImage, index) =>
                 typeof vImage === "string" ? (
                   <div
-                    className={`answer-option col-3 ${selectedAnswer === index ? "selected" : ""
-                      }`}
+                    className={`answer-option col-3 ${selectedAnswer === index ? "selected" : ""}`}
                     onClick={() => handleAnswerSelect(index)}
                     key={index}
                   >
@@ -111,30 +111,6 @@ export default function Quiz() {
                   <div key={index}>Invalid image data</div>
                 )
               )}
-            </div>
-          </div>
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-12 mt-5">
-                <div>
-                  <h2 className="quiz-game-text">Play Quiz and Games</h2>
-                  <ul className="quiz-game-list">
-                    <li>
-                      Explore over 45 categories of quizzes, including
-                      Entertainment, Cricket, Business, and more!
-                    </li>
-                    <li>
-                      Participate in hourly-updated tournaments and challenge
-                      yourself to win.
-                    </li>
-                    <li>Earn coins for each task you complete.</li>
-                    <li>
-                      Join millions of quiz enthusiasts who trust us as their
-                      go-to platform for quizzes.
-                    </li>
-                  </ul>
-                </div>
-              </div>
             </div>
           </div>
         </div>

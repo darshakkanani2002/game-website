@@ -15,7 +15,7 @@ export default function Rules() {
     const fetchData = () => {
         axios.post(`${Test_API}question/list`)
             .then(response => {
-                console.log("Question Data ==>", response.data);
+                console.log("Question Data ==>", response.data.data);
                 // Filter and map data to only include required fields
                 const filteredData = Array.isArray(response.data.data)
                     ? response.data.data.map(item => ({
@@ -56,7 +56,7 @@ export default function Rules() {
                                             Entry Fees: {item.iEntry}
                                         </span>
                                     </p>
-                                    <h6>Your Current Balance: {item.currentBalance}</h6>
+                                    <h6>Your Current Balance: {item.currentBalance - item.iEntry}</h6>
                                     <div className='view-rank-sec'>
                                         <div className='d-flex align-items-center'>
                                             <h6 className='mb-0'>View Rank</h6>

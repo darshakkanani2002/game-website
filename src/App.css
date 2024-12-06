@@ -405,3 +405,105 @@ a {
   background-color: red !important;
   color: white; /* To ensure text is readable */
 }
+
+.wrapper {
+  width: 100%;
+  overflow-x: hidden;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper {
+  width: 300px;
+  height: 400px;
+  margin: 45px;
+  border-radius: 15px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #000;
+  width: 100%;
+  height: 100%;
+}
+
+.card-image {
+  position: relative;
+  transition: opacity 0.3s ease-out;
+  width: 100%;
+  height: 100%;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.card-description {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  color: #fff;
+}
+
+.card-description:before {
+  content: "";
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.card-description h1,
+.card-description p {
+  position: relative;
+  z-index: 10;
+  text-align: left;
+}
+
+.card-description h1 {
+  font-size: 28px;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.card-description p {
+  margin-top: 0;
+  letter-spacing: 1px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+}
+
+.swiperEffect {
+  border-radius: 0;
+}
+
+.swiper-slide {
+  border-radius: 18px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+}

@@ -1,3 +1,3 @@
-export const Test_API = 'http://192.168.1.100:10500/api/v1/';
+export const Test_API = 'http://192.168.1.7:10500/api/v1/';
 
-export const Img_Url = 'http://192.168.1.100:10500/'
+export const Img_Url = 'http://192.168.1.7:10500/'

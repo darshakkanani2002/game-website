@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 export default function Stories() {
     return (
         <div>
-            <div>
-                <div className='question-bg'>
+            <div className='story-bg'>
+                <div>
                     <div className='container-fluid'>
                         <div class="row align-items-start pt-4">
                             <div className='col-4 position-sticky top-0'>

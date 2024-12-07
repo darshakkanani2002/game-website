@@ -8,6 +8,14 @@
   font-family: "Roboto", sans-serif;
 }
 
+.w-51 {
+  width: 51%;
+}
+
+.w-52 {
+  width: 52%;
+}
+
 .fw-semibold {
   font-weight: 600;
 }
@@ -43,16 +51,24 @@ a {
   background-repeat: repeat;
   background-size: cover;
   height: 100vh;
-  height: auto;
+  /* height: auto; */
   /* min-height: 70rem; */
 }
 
-.question-text  {
+.story-bg {
+  background: #fff;
+  background: url('/img/game-banner.png') 100%;
+  background-repeat: repeat;
+  background-size: cover;
+  height: auto !important;
+}
+
+.question-text {
   font-size: 24px;
   font-weight: 500;
 }
 
-.quiz-images{
+.quiz-images {
   border: 1px solid #DD292C;
   height: 146px !important;
   border-radius: 10px !important;
@@ -124,6 +140,7 @@ a {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -133,6 +150,7 @@ a {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
@@ -333,7 +351,8 @@ a {
   color: #fff;
   border-radius: 40px 40px 10px 10px;
 }
-.skipped-answer{
+
+.skipped-answer {
   background-color: #FFA600;
   color: #fff;
   border-radius: 40px 40px 10px 10px;
@@ -360,20 +379,25 @@ a {
   background-color: #FF4600;
   color: #fff;
 }
-.game-name-btn span{
+
+.game-name-btn span {
   font-size: 11px;
 }
-.nav-link{
+
+.nav-link {
   color: #000 !important;
 }
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
   background-color: #fff !important;
   color: #FF4600 !important;
   position: relative !important;
   border-radius: 13px 0px 0px 13px;
   box-shadow: -3px 0px 0px 0px #FF4600;
 }
-.stories-icon{
+
+.stories-icon {
   width: 32px !important;
   height: 32px !important;
 }
@@ -394,7 +418,8 @@ a {
 
 .bg-green {
   background-color: green !important;
-  color: white; /* To ensure text is readable */
+  color: white;
+  /* To ensure text is readable */
 }
 
 .border-red {
@@ -403,7 +428,8 @@ a {
 
 .bg-red {
   background-color: red !important;
-  color: white; /* To ensure text is readable */
+  color: white;
+  /* To ensure text is readable */
 }
 
 .wrapper {

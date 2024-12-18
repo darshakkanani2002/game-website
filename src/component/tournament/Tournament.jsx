@@ -71,9 +71,9 @@ export default function Tournament() {
                                             <div className='d-flex'>
                                                 <div className='me-1'>
                                                     <img
-                                                        src="../../../public/img/entry-coin-ic.svg"
+                                                        src="../../../public/img/coin.gif"
                                                         alt="entry-coin-ic"
-                                                        className='img-fluid'
+                                                        className='img-fluid coin-gif-img'
                                                     />
                                                 </div>
                                                 <div>

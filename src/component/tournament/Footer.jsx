@@ -9,7 +9,7 @@ export default function Footer() {
 
     return (
         <div>
-            <div className='container position-fixed w-51 bottom-0'>
+            <div className='container position-fixed w-51 bottom-0 footer-shadow'>
                 <div className='row'>
                     <div className='col-4 text-center px-0'>
                         <Link to='/tournament'>

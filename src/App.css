@@ -11,7 +11,8 @@
 .w-51 {
   width: 51%;
 }
-.content-padding{
+
+.content-padding {
   padding-bottom: 55px;
 }
 
@@ -57,13 +58,15 @@ a {
   /* height: auto; */
   /* min-height: 70rem; */
 }
-.background-height-bg{
+
+.background-height-bg {
   background: #fff;
   background: url('/img/game-banner.png') 100%;
   background-repeat: repeat;
   background-size: cover;
   height: 100vh;
 }
+
 .story-bg {
   background: #fff;
   background: url('/img/game-banner.png') 100%;
@@ -193,7 +196,7 @@ a {
   animation: pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;
 }
 
-.tournament-lve-text p{
+.tournament-lve-text p {
   font-size: 11px;
 }
 
@@ -561,7 +564,13 @@ a {
 .swiper-button-prev {
   color: #fff;
 }
-
-.swiper-slide{
+.coin-gif-img{
+  height: 30px;
+  width: 30px;
+}
+.swiper-slide {
   background-color: transparent !important;
+}
+.footer-shadow{
+  box-shadow: 0px -2px 2px 0px #d8d8d8;
 }
